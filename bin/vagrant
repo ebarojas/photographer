@@ -1,0 +1,34 @@
+#!/bin/sh
+
+NGDOMAIN="cheve`date +%s`"
+HOST="CHEVE_CALLBACK_HOST: https://$NGDOMAIN.ngrok.com"
+
+# Remove old secrets
+rm -f /vagrant/config/application.yml
+rm -f /vagrant/config/database.yml
+rm -f /vagrant/config/*.pem
+
+# Copy dependencies to config
+cp /home/vagrant/deps/*.pem /vagrant/config/
+cp /home/vagrant/deps/*.yml /vagrant/config/
+
+# Replace ngrok boilerplate
+sed -i "s/yoursubdomain/$NGDOMAIN/g" /home/vagrant/.ngrok
+sed -i "s/yourtunnel/covedev/g" /home/vagrant/.ngrok
+sed -i "s/yourport/3000/g" /home/vagrant/.ngrok
+
+# Delete existing environment variable
+sed -i '/^CHEVE_CALLBACK_HOST/d' /vagrant/config/application.yml
+
+# Add environment variable with ngrok domain
+printf "\n$HOST\n" >> /vagrant/config/application.yml
+
+# Set locale
+printf "\nexport LC_ALL=\"en_US.UTF-8\"\n" >> /home/vagrant/.bashrc
+
+# Start Mailcatcher
+ps ax | grep mailcatcher | awk '{print $1}' | xargs kill -9
+`which mailcatcher` --ip=0.0.0.0
+
+# Echo full address
+echo $HOST

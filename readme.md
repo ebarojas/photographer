@@ -4,8 +4,28 @@ http://blog.smalleycreative.com/tutorials/setup-a-django-vm-with-vagrant-virtual
 
 # If it's a new project ->
 Copy vagrantfile and /binfolder
-Install Pip and Django
+cd /vagrant
+startapp ....
+
+ $ sudo apt-get install build-essential
+$ wget http://nodejs.org/dist/v0.8.16/node-v0.8.16.tar.gz
+$ tar -xzf node-v0.8.16.tar.gz
+$ cd node-v0.8.16/
+$ ./configure
+$ make
+$ sudo make install
+
+# Update
+sudo npm cache clean -f
+sudo npm install -g n
+sudo n stable
+
+ sudo npm install -g bower
+ sudo pip install django-bower
+
 Install latest version of node.js
+https://thomashunter.name/blog/install-node-js-on-debian-6/
+
 install bower + bootstrap
 
 If not, download source from GitHub

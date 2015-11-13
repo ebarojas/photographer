@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Uploads</h2>
+    <ul>
+        {% for product in object_list %}
+            <li>{{ product.name }}</li>
+            <li>{{ product.email }}</li>
+            <li><img src="{{ product.shot.url }}"/></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -26,6 +26,8 @@ sudo n stable
 Install latest version of node.js
 https://thomashunter.name/blog/install-node-js-on-debian-6/
 
+
+
 install bower + bootstrap
 
 If not, download source from GitHub

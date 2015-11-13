@@ -38,6 +38,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'social_photographer',
+    'uploads',
+    'djangobower',
 )
 
 MIDDLEWARE_CLASSES = (

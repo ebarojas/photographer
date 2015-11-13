@@ -15,7 +15,19 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+# Added by me
+from django.views.generic import TemplateView
+from django.conf import settings
+from django.conf.urls.static import static
+
+from uploads.views import ProductList
+from uploads.views import MyFormView
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^products/$', ProductList.as_view()),
+    url(r'^product/$',  MyFormView.as_view()),
 ]
+
+if settings.DEBUG:
+    urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

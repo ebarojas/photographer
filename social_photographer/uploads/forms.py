@@ -4,4 +4,4 @@ from .models import Product
 class UploadForm(forms.ModelForm):
   class Meta:
     model = Product
-    exclude = ['owner']
+    exclude = ['created_at']

@@ -8,11 +8,11 @@ from uploads.models import Product
 from .forms import UploadForm
 
 class ProductList(ListView):
-    model = Publisher
+    model = Product
 
 #std form view
 class MyFormView(View):
-    form_class = MyForm
+    form_class = UploadForm
     initial = {'key': 'value'}
     template_name = 'upload_form_template.html'
 
@@ -21,7 +21,7 @@ class MyFormView(View):
         return render(request, self.template_name, {'form': form})
 
     def post(self, request, *args, **kwargs):
-        form = self.form_class(request.POST)
+        form = self.form_class(request.POST, request.FILES)
         if form.is_valid():
             # <process form cleaned data>
             form.save()

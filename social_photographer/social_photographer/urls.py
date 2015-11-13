@@ -25,7 +25,7 @@ from uploads.views import MyFormView
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^products/$', ProductList.as_view()),
+    url(r'^$', ProductList.as_view()),
     url(r'^product/$',  MyFormView.as_view()),
 ]
 

@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h2>Uploads</h2>
+    <h2>Choose a picture to download --></h2>
     <ul>
         {% for product in object_list %}
-            <li>{{ product.name }}</li>
-            <li>{{ product.email }}</li>
-            <li><img src="{{ product.shot.url }}"/></li>
+            <h3>{{ product.name }}</h3>
+            <h4>{{ product.price }}</h4>
+            <img src="{{ product.shot.url }}"style="width: 40%"/>
         {% endfor %}
     </ul>
 {% endblock %}
